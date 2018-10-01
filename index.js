@@ -59,6 +59,33 @@ bot.on("message", async msg => {
         return;
       }
     }
+
+    if(msg.channel.id == "496178859499192320"){
+      let sayargs = args.join(" ");
+      let sender = msg.author;
+      msg.delete(0);
+      msg.channel.send(`${sender}... Envoie de la commande en cours <a:loading:496022340367417344>`).then(msg => msg.delete(3000));
+      if(cmd == "null"){
+        setTimeout(function(){
+          let embed = new Discord.RichEmbed()
+          .setTitle(":tada: Nouvelle proposition :tada:")
+          .addField("Proposition", sayargs)
+          .setColor("#28a8e2");
+          bot.channels.get("496006548301283328").send(embed);
+          return;
+        }, 3000);
+      }
+      else{
+        setTimeout(function(){
+          let embed = new Discord.RichEmbed()
+          .setTitle(":tada: Nouvelle proposition :tada:")
+          .addField("Auteur", cmd)
+          .addField("Proposition", sayargs)
+          .setColor("#28a8e2");
+          bot.channels.get("496006548301283328").send(embed);
+        }, 3000);
+      }
+    }
 });
 
 bot.login(process.env.TOKEN);
